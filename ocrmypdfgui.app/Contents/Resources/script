@@ -1,7 +1,7 @@
 #!/bin/sh
 # By David Pinney on 12 June 2015.
 # Description: run OCR on some PDFs.
-
+# Edited by Elijah Z Granet on  6 August 2021
 export PATH=$PATH:/usr/local/bin
 
 if [ $# == 0 ] ; then
@@ -11,7 +11,7 @@ fi
 
 for path in "$@"
 do
-	gs -sDEVICE=tiff32nc -r300 -o "$path"-temp.tif "$path"
-	tesseract "$path"-temp.tif "$path"-OCRd pdf
+	/opt/homebrew/bin/gs -sDEVICE=tiff32nc -r300 -o "$path"-temp.tif "$path"
+	/opt/homebrew/bin/tesseract "$path"-temp.tif "$path"-OCRd pdf
 	rm "$path"-temp.tif
 done
